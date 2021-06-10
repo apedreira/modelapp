@@ -125,7 +125,7 @@ $baseSpacing: 15px;
   color: $navbar_TextPrimaryColor;
   padding: $baseSpacing;
   text-decoration: none;
-  border-bottom: $baseSpacing/3 solid $navbar-BG;
+  border-bottom: 5px solid $navbar-BG;
 }
 
 .c-navbar-link:hover, 
