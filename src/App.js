@@ -1,14 +1,17 @@
 
 import './App.css';
 import Navbar from './react-components/navbar'
-import Plot from './react-components/plot'
+import MyPlot from './react-components/plot'
+import LogisticModel from './logisticModel'
+
 import React from 'react';
-import { plot } from 'plotly.js';
+
+
 function App() {
   return (
     <div className="App">
 <Navbar></Navbar>
-<Plot></Plot>
+<MyPlot></MyPlot>
     </div>
   );
 }
