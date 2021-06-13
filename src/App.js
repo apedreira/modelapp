@@ -11,7 +11,10 @@ function App() {
   return (
     <div className="App">
 <Navbar></Navbar>
+<div className="o-body-wrapper">
 <MyPlot></MyPlot>
+</div>
+
     </div>
   );
 }

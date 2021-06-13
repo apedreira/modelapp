@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <nav className="c-navbar">
             <Router>
-                <div className="c-navbar-logo">ModelApp</div>
+                <div className="c-navbar-logo"><Logo /></div>
 
                 <ul className="c-navbar-menu">
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Plot from 'react-plotly.js';
 
+//https://gist.github.com/mandiwise/44d1edce18f2ffb14f63
+
 // https://stackoverflow.com/questions/55757761/handle-an-input-with-react-hooks
 //Función que transforma los inputs (string) a un array de floats
 const strToArr = (str) => {
@@ -49,8 +51,8 @@ const MyPlot = () => {
     let mu = growthRate
     let lam = lagPhase
     let foo = mathFunct(yAxisSplitted, xAxisSplitted, c, mu, lam)
-   let log10Nt=foo[1]
-    setPlotData({ x: xAxisSplitted, y: foo[0], z:log10Nt })
+    let log10Nt = foo[1]
+    setPlotData({ x: xAxisSplitted, y: foo[0], z: log10Nt })
     console.log(yAxisSplitted)
 
   };
@@ -97,35 +99,81 @@ const MyPlot = () => {
 
   return (
     <>
-      <label>
-        OD or N (Values separated by comma):
-        <textarea name="yInput" value={yAxis} onChange={handleInputChange} />
-      </label>
-      <br></br>
-      <label>
-        Time (Values separated by comma):
-        <textarea name="xInput" value={xAxis} onChange={handleInputChange} />
-      </label>
-      <br></br>
-      <label>
-        Growth rate (μ):
-        <input name="muInput" value={growthRate} onChange={handleInputChange} />
-      </label>
-      <br></br>
-      <label>
-        Carrying capacity (K):
-        <input name="kInput" value={carrCapacity} onChange={handleInputChange} />
-      </label>
-      <br></br>
-      <label>
-        Lag phase duration (λ):
-        <input name="lamInput" value={lagPhase} onChange={handleInputChange} />
-      </label>
-      <button onClick={handleClick}>MODEL!</button>
-      <p> </p>
-      <Plot
-        data={[traces, traces2]}
-      />
+      <section className="c-plot_layout">
+        <div className="c-form">
+          <label>
+            OD or N (Values separated by comma): <br></br>
+            <textarea className="c-form-textarea" name="yInput" value={yAxis} onChange={handleInputChange} />
+          </label>
+          <br></br>
+          <label>
+            Time (Values separated by comma):  <br></br>
+            <textarea className="c-form-textarea" name="xInput" value={xAxis} onChange={handleInputChange} />
+          </label>
+          <br></br>
+          <label>
+            Growth rate (μ): &nbsp;
+            <input name="muInput" value={growthRate} onChange={handleInputChange} />
+          </label>
+          <br></br>
+          <label>
+            Carrying capacity (K): &nbsp;
+            <input name="kInput" value={carrCapacity} onChange={handleInputChange} />
+          </label>
+          <br></br>
+          <label>
+            Lag phase duration (λ): &nbsp;
+            <input name="lamInput" value={lagPhase} onChange={handleInputChange} />
+          </label>
+          <br></br>
+          <button onClick={handleClick}>MODEL!</button>      
+        </div>
+        <div className="c-plot"><Plot
+          data={[traces, traces2]}
+          layout={{ title: "Logistic model" },
+          {
+            title: 'Logistic Model',
+            xaxis: {
+              title: 'Time',
+              titlefont: {
+                family: 'Arial, sans-serif',
+                size: 18,
+                color: 'lightgrey'
+              },
+              showticklabels: true,
+              tickangle: 'auto',
+              tickfont: {
+                family: 'Old Standard TT, serif',
+                size: 14,
+                color: 'black'
+              },
+              exponentformat: 'e',
+              showexponent: 'all'
+            },
+            yaxis: {
+              title: 'Optical density',
+              titlefont: {
+                family: 'Arial, sans-serif',
+                size: 18,
+                color: 'lightgrey'
+              },
+              showticklabels: true,
+              tickangle: 45,
+              tickfont: {
+                family: 'Old Standard TT, serif',
+                size: 14,
+                color: 'black'
+              },
+              exponentformat: 'e',
+              showexponent: 'all'
+            }
+          }
+
+          }
+        /></div>
+
+      </section>
+
     </>
   );
 }
